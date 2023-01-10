@@ -43,30 +43,6 @@ module "cloud-nat-group1" {
   name       = "${var.network_prefix}-cloud-nat-group1"
 }
 
-resource "google_compute_subnetwork" "group2" {
-  name                     = "${var.network_prefix}-group2"
-  ip_cidr_range            = "10.127.0.0/20"
-  network                  = google_compute_network.default.self_link
-  region                   = var.group2_region
-  private_ip_google_access = true
-}
-
-# Router and Cloud NAT are required for installing packages from repos (apache, php etc)
-resource "google_compute_router" "group2" {
-  name    = "${var.network_prefix}-gw-group2"
-  network = google_compute_network.default.self_link
-  region  = var.group2_region
-}
-
-module "cloud-nat-group2" {
-  source     = "terraform-google-modules/cloud-nat/google"
-  version    = "~> 2.2"
-  router     = google_compute_router.group2.name
-  project_id = var.project
-  region     = var.group2_region
-  name       = "${var.network_prefix}-cloud-nat-group2"
-}
-
 # [START cloudloadbalancing_ext_http_gce]
 module "gce-lb-http" {
   source  = "GoogleCloudPlatform/lb-http/google"
