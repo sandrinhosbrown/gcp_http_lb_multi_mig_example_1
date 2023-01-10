@@ -75,9 +75,7 @@ module "gce-lb-http" {
   project = var.project
   target_tags = [
     "${var.network_prefix}-group1",
-    module.cloud-nat-group1.router_name,
-    "${var.network_prefix}-group2",
-    module.cloud-nat-group2.router_name
+    module.cloud-nat-group1.router_name
   ]
   firewall_networks = [google_compute_network.default.name]
 
@@ -116,19 +114,6 @@ module "gce-lb-http" {
       groups = [
         {
           group                        = module.mig1.instance_group
-          balancing_mode               = null
-          capacity_scaler              = null
-          description                  = null
-          max_connections              = null
-          max_connections_per_instance = null
-          max_connections_per_endpoint = null
-          max_rate                     = null
-          max_rate_per_instance        = null
-          max_rate_per_endpoint        = null
-          max_utilization              = null
-        },
-        {
-          group                        = module.mig2.instance_group
           balancing_mode               = null
           capacity_scaler              = null
           description                  = null
