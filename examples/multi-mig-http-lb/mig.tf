@@ -27,6 +27,7 @@ data "template_file" "group-startup-script" {
 
   vars = {
     PROXY_PATH = ""
+    ufw_allow_nginx = "Nginx HTTP"
   }
 }
 

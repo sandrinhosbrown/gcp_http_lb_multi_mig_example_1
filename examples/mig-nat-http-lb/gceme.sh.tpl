@@ -8,6 +8,10 @@ if [ -f "/etc/redhat-release" ]; then
 else
   apt-get update
   apt-get install -y nginx
+  ufw allow '${ufw_allow_nginx}'
+  systemctl enable nginx
+  systemctl restart nginx
+
 fi
 
 cat > /var/www/html/index.html <<'EOF'

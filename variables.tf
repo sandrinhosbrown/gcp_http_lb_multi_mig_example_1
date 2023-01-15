@@ -17,11 +17,13 @@
 variable "project" {
   description = "The project to deploy to, if not set the default provider project is used."
   type        = string
+  default     = "sbrown-1379"
 }
 
 variable "name" {
   description = "Name for the forwarding rule and prefix for supporting resources"
   type        = string
+  default     = "fw-rule"
 }
 
 variable "create_address" {
