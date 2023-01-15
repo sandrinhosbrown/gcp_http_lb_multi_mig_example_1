@@ -11,7 +11,11 @@ else
   ufw allow '${ufw_allow_nginx}'
 fi
 
-echo "Welcome to Google Compute VM Instance deployed using Terraform!!!" > /var/www/html
+echo "Welcome to Google Compute VM Instance deployed using Terraform!!!" > /var/www/html/index.html
+
+cat <<EOF > /var/www/html/index.html
+<html><body><p>Linux startup script from Cloud Storage.</p></body></html>
+EOF
 
 #cat > /var/www/html/index.html <<'EOF'
 #<!doctype html>
