@@ -9,9 +9,6 @@ else
   apt-get update
   apt-get install -y nginx
   ufw allow '${ufw_allow_nginx}'
-  systemctl enable nginx
-  systemctl restart nginx
-
 fi
 
 cat > /var/www/html/index.html <<'EOF'
@@ -32,5 +29,5 @@ mv /var/www/html/index.html /var/www/html/index.html.old || echo "Old index does
 [[ -n "${PROXY_PATH}" ]] && mkdir -p /var/www/html/${PROXY_PATH} && cp /var/www/html/index.html /var/www/html/${PROXY_PATH}/index.html
 
 chkconfig nginx on || systemctl enable nginx || systemctl start nginx
-systemctl restart nginx
+systemctl restart nginx && journalctl -xe
 
