@@ -14,7 +14,7 @@ fi
 echo "Welcome to Google Compute VM Instance deployed using Terraform!!!" > /var/www/html/index.html
 
 cat <<EOF > /var/www/html/index.html
-<html><body><p>Linux startup script from Cloud Storage.</p></body></html>
+<html><body><h1>Demo</h1><p>Serving Nginx from GCP</p></body></html>
 EOF
 
 #cat > /var/www/html/index.html <<'EOF'
