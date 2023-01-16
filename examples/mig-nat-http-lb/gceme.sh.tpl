@@ -14,8 +14,14 @@ fi
 #echo "Welcome to Google Compute VM Instance deployed using Terraform!!!" > /var/www/html/index.html
 
 cat <<EOF > /var/www/html/index.html
-<html><body><h1>Demo from Sandro</h1><p>Serving Nginx from GCP in multiple zones</p></body></html>
+<html><body>
+<h1>Demo from Sandro</h1>
+<p>Serving Nginx from GCP in multiple zones</p>
+<? echo $_SERVER["REMOTE_ADDR"]; ?>
+</body></html>
 EOF
+
+echo 
 
 chkconfig nginx on || systemctl enable nginx || systemctl start nginx
 systemctl restart nginx
