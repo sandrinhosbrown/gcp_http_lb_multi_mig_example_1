@@ -7,13 +7,13 @@ if [ -f "/etc/redhat-release" ]; then
   yum $RPM_INSTALL_ARGS || dnf $RPM_INSTALL_ARGS
 else
   apt-get update
-  apt-get install -y nginx
+  apt-get install -y nginx php-fpm
   ufw allow '${ufw_allow_nginx}'
 fi
 
 #echo "Welcome to Google Compute VM Instance deployed using Terraform!!!" > /var/www/html/index.html
 
-cat <<EOF > /var/www/html/index.html
+cat <<EOF > /var/www/html/index.php
 <html><body>
 <h1>Demo from Sandro</h1>
 <p>Serving Nginx from GCP deployed in multiple zones</p>
