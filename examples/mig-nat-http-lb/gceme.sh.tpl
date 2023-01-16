@@ -16,8 +16,8 @@ fi
 cat <<EOF > /var/www/html/index.html
 <html><body>
 <h1>Demo from Sandro</h1>
-<p>Serving Nginx from GCP in multiple zones</p>
-<? echo $_SERVER["REMOTE_ADDR"]; ?>
+<p>Serving Nginx from GCP deployed in multiple zones</p>
+<p><?php printf($_SERVER["HTTP_HOST"]); ?></p>
 </body></html>
 EOF
 
